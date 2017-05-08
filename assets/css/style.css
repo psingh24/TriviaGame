@@ -1,0 +1,22 @@
+.row {
+    border: solid;
+    border-width: 2px;
+    border-color: red;
+    margin-bottom: 60px;
+}
+
+
+.col-md-3 {
+    background-color: green;
+}
+.col-md-10 {
+    background-color: yellow;
+    height: 100px;
+}
+
+
+.col-md-5 {
+    /*background-color: blue;*/
+    height: 60px;
+    margin-top: 20px;
+}
