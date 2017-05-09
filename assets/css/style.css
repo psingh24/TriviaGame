@@ -27,3 +27,9 @@
               filter: drop-shadow(1px 1px 0 #FFD700) 
               drop-shadow(-1px -1px 0 #FFD700);
 }
+
+.nextQuestion {
+    position: relative;
+    top: 62px;
+    left: 523px;
+}

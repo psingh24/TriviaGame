@@ -14,7 +14,7 @@ $(document).ready(function () {
         questions: [
                     "In S1E1 'Pilot': Who started their first day at Dunder Mifflin Scranton?",
                     "In S1E2 'Diversity Day': What famous comedian's stand up routine does Michael imitate?",
-                    "In S1E3 'Health Care': Which of these is NOT one of Jim and Pam's made up diseases?",
+                    "In S1E3 'Health Care': Which of these is NOT one of Jim and Pam's diseases?",
                     "In S1E4 'The Alliance': How much money does Michael donate to Oscar's nephew's charity, not realizing it is a walk-a-thon and the amount is per mile?",
                     "In S1E5 'Basketball': What small appliance of Pam's breaks down? (It was given to her at her engagement party three years earlier)",
                     "In S1E6 'Hot Girl' What is the Hot Girl's name?",
@@ -26,7 +26,7 @@ $(document).ready(function () {
 
         answers: [
                   ["Jim Halpert", "Ryan Howard", "Michael Scott", "Erin Hannon"], ["Chris Rock", "Richard Pryor", "Robin Williams", "George Carlin"],
-                  ["Killer Nanorobots", "Hot Dog Fingers", "Spontaneous Dental Hydroplosion", "Hair Cancer"], ["$40", "$10", "$25", "$100"],
+                  ["Killer Nanorobots", "Hot Dog Fingers", "Count Choculytise", "Hair Cancer"], ["$40", "$10", "$25", "$100"],
                   ["Toaster", "Microwave", "Blender", "Toaster Oven"], ["Amy", "Christy", "Kelly", "Katy"],
                   ["The Busiest Beaver Dundie", "The Bushiest Beaver Dundie", "Spicy Curry Dundie", "Whitest Sneaker Dundie"],
                   ["LUVMKR", "WLHUNG", "TODPKR", "BGDADY"], ["Flonkerton", "Icelandic Snowshoe Racing", "Bixinng", "Pergerhosen"],
@@ -39,9 +39,14 @@ $(document).ready(function () {
         correctAnswers: ["Ryan Howard", "Chris Rock", "Hair Cancer", "$25", "Toaster Oven", "Katy", "The Bushiest Beaver Dundie",
                         "WLHUNG", "Flonkerton", "Legends of the Fall, Legally Blonde, Bridges of Madison County, My Big Fat Greek Wedding, Ghost (but just that one scene)"
                         ],
-        videoAnswers: [ "https://www.youtube.com/embed/aeQIQuDL8aA?autoplay=1","https://www.youtube.com/embed/aeQIQuDL8aA?autoplay=1"],                
+        videoAnswers: [ "https://www.youtube.com/embed/4Q12Spp6mnI?autoplay=1", "https://www.youtube.com/embed/aeQIQuDL8aA?autoplay=1", "https://www.youtube.com/embed/ifFzxiSQsCE?start=52&end=102&autoplay=1", "https://www.youtube.com/embed/hX1cX9sxygA?autoplay=1",
+               "https://www.youtube.com/embed/eJGov6c1VmU?autoplay=1", "https://www.youtube.com/embed/YOjK1_JvZHQ?autoplay=1", "https://www.youtube.com/embed/vYb9XjZglSw?autoplay=1", "https://www.youtube.com/embed/6xST2zjX0UI?start=150&end=159&autoplay=1",
+               "https://goo.gl/cIHCsV","https://goo.gl/4hBky4"],      
 
 
+              
+
+        videoLength: [19000, 43000, 50000, 18000, 14000, 31000, 13000, 9000, 14000, 49000],
         startGame: function() {
             $("#start").click(function() {
                 object.displayQuestion();
@@ -70,7 +75,7 @@ $(document).ready(function () {
      correctSelection: function() {
         correctAnswers++;
           $(".question").html("<h2>Correct!!</h2>");
-          $(".mainArea").html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='420' height='345' style=' position:relative; left:361px; top:30px' src='"+object.videoAnswers[count]+"'></iframe>")
+          $(".mainArea").html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='420' height='345' style=' position:relative; left:361px; top:30px' src='"+object.videoAnswers[count]+"'></iframe>"+"<br><button class='nextQuestion'>Next Question</button>")
 
 setTimeout(object.wait, 4000);
     },
