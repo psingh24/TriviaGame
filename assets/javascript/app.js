@@ -3,9 +3,10 @@ $(document).ready(function () {
     var showImage;
 
     var count = 0;
-    var clock = 5;
+    var clock = 30;
     var correctAnswers = 0;
     var wrongAnswers = 0;
+    var timeOut;
 
 
     var object = {
@@ -48,6 +49,7 @@ $(document).ready(function () {
         startGame: function() {
             $("#start").click(function() {
                 object.displayQuestion()
+                object.timer
                 //Need to work on timer//
             });
         },
@@ -74,28 +76,54 @@ $(document).ready(function () {
         correctAnswers++;
        
         //   $(".question").html("<h2>Correct!!</h2>");
-          $(".results").html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='' height='345' src='"+object.videoAnswers[count]+"'></iframe>"+"<br><button class='nextQuestion'>Next Question</button>");
+          $(".results").html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='' height='345' src='"+object.videoAnswers[count]+"'></iframe>");
            $(".answer1").empty();
             $(".answer2").empty();
             $(".answer3").empty();
             $(".answer4").empty();
    
-    
+
+           
+
+
+        $("#nextQuestion").click(function() {
+            clearTimeout(timeOut)
+            object.nextQuestion()
+            $(this).off("click")
+
+            
+
+        });
+           timeOut = setTimeout(object.nextQuestion, object.videoLength[count]);
+
+        
+        
         // count++;
-        setTimeout(object.nextQuestion, object.videoLength[count]);
-        console.log()
+        // setTimeout(object.nextQuestion, object.videoLength[count]);
+      
         
     },
 
     wrongSelection: function() {
         wrongAnswers++;
          $(".question").html("<h2>Inorrect!!</h2>");
-         $(".results").html("<h2 class='text-center'>Incorrect!</h2>" + "<img src='assets/images/no.gif'>"+"<br><button class='nextQuestion'>Next Question</button>");
+         $(".results").html("<h2 class='text-center'>Incorrect!</h2>" + "<img src='assets/images/no.gif'>");
           $(".answer1").empty();
             $(".answer2").empty();
             $(".answer3").empty();
             $(".answer4").empty();
-        setTimeout(object.nextQuestion, 5000);
+
+ $("#nextQuestion").click(function() {
+            clearTimeout(timeOut)
+            object.nextQuestion()
+            $(this).off("click")
+
+            
+
+        });
+
+           
+       timeOut = setTimeout(object.nextQuestion, 5000);
     },
 
 
@@ -137,6 +165,9 @@ $(document).ready(function () {
             $(".answer4").empty();
         },
 
+       
+ 
+
 
         timer: function() {
 
@@ -144,7 +175,7 @@ $(document).ready(function () {
              clock--;
 
              if (clock < 0) {
-                clock= 5;
+                clock= 30;
              }
         }
 
@@ -154,6 +185,7 @@ $(document).ready(function () {
    
   object.startGame();
 object.pickingAnswer();
+
 //   object.nextQuestion();
     
 });
