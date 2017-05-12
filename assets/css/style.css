@@ -1,18 +1,60 @@
+body {
+    background: url(https://img.clipartfest.com/c318feb078ddc616c1ce49f6626ba209_nexxuz-loose-leaf-paper-clip-notebook-paper-clipart-background_912-1116.svg);
+    -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; 
+        background-repeat: no-repeat;
+}
+
+
+
+
+.logo{
+       width: 600px;
+       height: 200px;
+       position: relative;
+     
+       top: 47px;
+}
+
+.title {
+    margin-bottom: 70px;
+}
+
+
+.question {
+    position: relative;
+    top: 16px;
+    left: -56px;
+}
+
+/*.choices {
+    position: absolute;
+    top: 435px;
+    left: 400px;
+}*/
+
+h1 {
+    font-size: 80px;
+    font-family: Helvetica;
+    font-weight: bold;
+}
+
+
 .row {
     /*border: solid;*/
     /*border-width: 2px;*/
     /*border-color: red;*/
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 
+.clock {
+     font-size: 20px;
+      color: black;
+       text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
 
-.col-md-3 {
-    background-color: green;
-}
-.col-md-10 {
-    background-color: yellow;
-    height: 100px;
-}
 
 
 .col-md-5 {
@@ -21,15 +63,61 @@
     
 }
 
-.answer:hover {
+/*.answer:hover {
     -webkit-filter: drop-shadow(1px 1px 0 #FFD700)
               drop-shadow(-1px -1px 0 #FFD700);
               filter: drop-shadow(1px 1px 0 #FFD700) 
               drop-shadow(-1px -1px 0 #FFD700);
+}*/
+
+/*.answer:hover {
+    -webkit-filter: drop-shadow(1px 1px 0 blue)
+              drop-shadow(-1px -1px 0 blue);
+              filter: drop-shadow(1px 1px 0 blue) 
+              drop-shadow(-1px -1px 0 blue);
+}*/
+
+
+.question, .font {
+    color: black;
+     /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+     font-size: 20px;
 }
 
+
+.answer {
+	display: inline-block;
+	position: relative;
+	padding-bottom: 3px;
+}
+.answer:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 3px;
+	width: 0px;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+.answer:hover:after {
+	width: 12%;
+	background: black;
+}
+
+.answer { cursor: pointer; cursor: hand; }
 /*.nextQuestion {
     position: relative;
     top: 62px;
     left: 523px;
 }*/
+
+.results {
+    position: absolute;
+    top: 231px;
+    right: 5px;
+}
+
+#nextQuestion {
+    position: absolute;
+    left: 260px;
+}

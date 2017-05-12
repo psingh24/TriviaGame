@@ -7,7 +7,7 @@ $(document).ready(function () {
     var correctAnswers = 0;
     var wrongAnswers = 0;
     var timeOut;
-
+var audio = new Audio("assets/images/theOffice.mp3");
 
     var object = {
 
@@ -47,7 +47,15 @@ $(document).ready(function () {
         videoLength: [20000, 27000, 50000, 18000, 14000, 31000, 13000, 9000, 21000, 9000],
 
         startGame: function() {
+            $("#nextQuestion").hide();
+            $(".answer1").hide();
+            $(".answer2").hide();
+            $(".answer3").hide();
+            $(".answer4").hide();
+            $(".question").hide();
             $("#start").click(function() {
+                 audio.play();
+                 
                 object.displayQuestion()
                 object.timer
                 //Need to work on timer//
@@ -74,13 +82,17 @@ $(document).ready(function () {
 
      correctSelection: function() {
         correctAnswers++;
+         audio.pause();
        
         //   $(".question").html("<h2>Correct!!</h2>");
           $(".results").html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='' height='345' src='"+object.videoAnswers[count]+"'></iframe>");
-           $(".answer1").empty();
-            $(".answer2").empty();
-            $(".answer3").empty();
-            $(".answer4").empty();
+           $(".answer1").hide();
+            $(".answer2").hide();
+            $(".answer3").hide();
+            $(".answer4").hide();
+            $(".question").hide();
+             $("#nextQuestion").show();
+             
    
 
            
@@ -106,12 +118,14 @@ $(document).ready(function () {
 
     wrongSelection: function() {
         wrongAnswers++;
-         $(".question").html("<h2>Inorrect!!</h2>");
+        audio.pause();
          $(".results").html("<h2 class='text-center'>Incorrect!</h2>" + "<img src='assets/images/no.gif'>");
-          $(".answer1").empty();
-            $(".answer2").empty();
-            $(".answer3").empty();
-            $(".answer4").empty();
+           $(".answer1").hide();
+            $(".answer2").hide();
+            $(".answer3").hide();
+            $(".answer4").hide();
+            $(".question").hide();
+             $("#nextQuestion").show();
 
  $("#nextQuestion").click(function() {
             clearTimeout(timeOut)
@@ -129,12 +143,21 @@ $(document).ready(function () {
 
 
         displayQuestion: function () {
+            $("#start").hide();
+            $("#nextQuestion").hide();
+             $(".answer1").show();
+            $(".answer2").show();
+            $(".answer3").show();
+            $(".answer4").show();
+            $(".question").show();
             $(".question").text(object.questions[count]);
             $(".answer1").text(object.answers[count][0]);
             $(".answer2").text(object.answers[count][1]);
             $(".answer3").text(object.answers[count][2]);
             $(".answer4").text(object.answers[count][3]);
             $(".results").empty();
+             audio.play();
+            
 
             // object.pickingAnswer();
 
@@ -145,7 +168,7 @@ $(document).ready(function () {
 
               if (count < 9) {
 	        count++;
-            console.log(count)
+            // console.log(count)
 	        object.displayQuestion();
 	        // counter = 5;
 	        // object.timer();
@@ -163,6 +186,8 @@ $(document).ready(function () {
             $(".answer2").empty();
             $(".answer3").empty();
             $(".answer4").empty();
+             $("#nextQuestion").hide();
+            audio.play();
         },
 
        

@@ -18,22 +18,28 @@
 <body>
 
 
-<button id="start">Start</button>
     <div class="container">
+        <div class="title text-center"><img class="logo" src="assets/images/officee.png" alt="logo"></div>
+
+        <div class="row">
+       <div class="col-md-12 text-center"><button id="start" class="btn btn-success text-center">Start</button></div>  
+        </div>
     <div class="row">
-        <div class="col-md-9 question"></div>
-        <div class="col-md-3"> <p>Time Remaining:</p><p id="clock"></p></div>
+        <div class="col-md-6 col-md-offset-2 question text-center"></div>
+        <div class="col-md-2"><p class="clock" id="clock"></p></div>
         
     </div>
     <div class="row">
-       <div class="col-md-12 text-center results">hello</div>
-       <button id="nextQuestion">Next Question</button>
+       <div class="col-md-12 text-center results"></div>
+       <button id="nextQuestion" class="btn btn-success">Next Question</button>
     </div>
 
-    <div class="row"><div class="col-md-12 text-center answer answer1">A.</div></div>
-    <div class="row"><div class="col-md-12 text-center answer answer2">B.</div></div>
-    <div class="row"><div class="col-md-12 text-center answer answer3">C.</div></div>
-    <div class="row"><div class="col-md-12 text-center answer answer4">D..</div></div>
+<div class="choices">
+    <div class="row hover"><div class="col-md-12 text-center answer answer1 font "></div></div>
+    <div class="row"><div class="col-md-12 text-center answer answer2 font"></div></div>
+    <div class="row"><div class="col-md-12 text-center answer answer3 font"></div></div>
+    <div class="row"><div class="col-md-12 text-center answer answer4 font"></div></div>
+</div>
 
 
 
