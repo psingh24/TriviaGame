@@ -165,6 +165,15 @@ $(document).ready(function () {
             wrongAnswers++;
              $("#clock").hide();
 
+    //  next.click(function() {
+    //         clearTimeout(timeOut)
+    //         object.nextQuestion()
+    //         $(this).off("click")
+
+            
+
+    //     });
+
             timeOut = setTimeout(object.nextQuestion, 5000);
     
     },
@@ -229,7 +238,6 @@ $(document).ready(function () {
                 clock = 30;
                 correctAnswers = 0;
                 wrongAnswers = 0;
-                var clock = 30;
                 object.timer();
                 object.displayQuestion();
             })
@@ -251,7 +259,7 @@ $(document).ready(function () {
                         clock--;
                     }
                 }
-                $("#clock").html(clock);
+                $("#clock").html("<p>Timer:</p>" + clock);
 
             }
 
