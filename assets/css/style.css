@@ -51,10 +51,10 @@ h1 {
 }
 
 .clock {
-     font-size: 20px;
-      color: black;
+    font-size: 20px;
+    color: black;
     position: absolute;
-    top: 26px;
+    top: 35px;
     right: 96px;
 }
 
@@ -125,6 +125,7 @@ col-md-5 {
 #nextQuestion {
     position: absolute;
     left: 260px;
+    top: 445px;
 }
 
 .finalScreen {

@@ -8,7 +8,7 @@ $(document).ready(function () {
     var audio = new Audio("assets/images/theOffice.mp3");
     var question = $(".question"); var next =  $("#nextQuestion"); var answer = $(".answer"); var answer1 = $(".answer1"); var answer2 = $(".answer2"); var answer3 = $(".answer3"); var answer4 = $(".answer4");
     var replay = $("#replay"); var start = $("#start"); var results = $(".results"); 
-    var theClock;
+    var theClock; 
                  
 
 
@@ -100,6 +100,7 @@ $(document).ready(function () {
             question.hide();
             replay.hide();
              next.show();
+             $("#clock").hide();
             
              
    
@@ -136,6 +137,7 @@ $(document).ready(function () {
             question.hide();
             replay.hide();
              next.show();
+             $("#clock").hide();
              
 
         next.click(function() {
@@ -160,6 +162,8 @@ $(document).ready(function () {
             question.hide();
             replay.hide();
              next.show();
+            wrongAnswers++;
+             $("#clock").hide();
 
             timeOut = setTimeout(object.nextQuestion, 5000);
     
@@ -181,6 +185,7 @@ $(document).ready(function () {
             answer4.text(object.answers[count][3]);
             results.empty();
              audio.play();
+              $("#clock").show();
             
 
             // object.pickingAnswer();
@@ -224,6 +229,8 @@ $(document).ready(function () {
                 clock = 30;
                 correctAnswers = 0;
                 wrongAnswers = 0;
+                var clock = 30;
+                object.timer();
                 object.displayQuestion();
             })
         },
