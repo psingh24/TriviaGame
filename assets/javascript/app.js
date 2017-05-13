@@ -8,6 +8,7 @@ $(document).ready(function () {
     var wrongAnswers = 0;
     var timeOut;
 var audio = new Audio("assets/images/theOffice.mp3");
+audio.loop = true;
 
     var object = {
 
