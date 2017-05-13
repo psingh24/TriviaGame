@@ -25,8 +25,9 @@ body {
 
 .question {
     position: relative;
-    top: 16px;
-    left: -56px;
+    top: 37px;
+    left: 55px;
+    line-height: 22px;
 }
 
 /*.choices {
@@ -46,21 +47,22 @@ h1 {
     /*border: solid;*/
     /*border-width: 2px;*/
     /*border-color: red;*/
-    margin-bottom: 20px;
+    /*margin-bottom: 20px;*/
 }
 
 .clock {
      font-size: 20px;
       color: black;
-       text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    position: absolute;
+    top: 26px;
+    right: 96px;
 }
 
 
 
-.col-md-5 {
+col-md-5 {
     /*background-color: blue;*/
     height: 60px;
-    
 }
 
 /*.answer:hover {
@@ -76,7 +78,9 @@ h1 {
               filter: drop-shadow(1px 1px 0 blue) 
               drop-shadow(-1px -1px 0 blue);
 }*/
-
+/*p {
+    margin: 32px 0 10px 20px;
+}*/
 
 .question, .font {
     color: black;
@@ -115,9 +119,19 @@ h1 {
     position: absolute;
     top: 231px;
     right: 5px;
+    padding-bottom: 10px;
 }
 
 #nextQuestion {
     position: absolute;
     left: 260px;
+}
+
+.finalScreen {
+    line-height: 10px;
+}
+
+.choices {
+    padding-top: 70px;
+    line-height: 59px;
 }
