@@ -58,101 +58,87 @@ $(document).ready(function () {
             question.hide();
             replay.hide();
 
-            //On click, start the game, display the questions, and start the audio
+            //On click, start the game, display the questions, and start the audio start timer
             start.click(function() {
                  audio.play();
                  object.displayQuestion()
                  object.timer();
-                //Need to work on timer//
+                
             });
         },
-
+        // When the an asnwer is picked do this...
         pickingAnswer: function () {
-
             answer.on("click", function () {
-                // console.log(object.correctAnswers[count])
-                //answeredQuestion = true;
+                //seclected answer is this
                 selectedAnswer = $(this).text();
+                    //if selected answer is correct do this...
                     if (selectedAnswer === object.correctAnswers[count]) {
+                        //display the correct screen and clear the clock
                         object.correctSelection();
                         clearInterval(theClock);
-                        //Once clock is figured out, clear it
-                    }
+                        }
+                    //Else display wrong screen and clear the clock
                     else {
                          object.wrongSelection();
                          clearInterval(theClock);
-                           //Once clock is figured out, clear it
-                    }
+                        }
             })
 
         },
 
+    //Corect Answer Screen
      correctSelection: function() {
+         //increase correct answer
         correctAnswers++;
-         audio.pause();
-       
-        //   $(".question").html("<h2>Correct!!</h2>");
-          results.html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='' height='345' src='"+object.videoAnswers[count]+"'></iframe>");
-           answer1.hide();
-            answer2.hide();
-            answer3.hide();
-            answer4.hide();
-            question.hide();
-            replay.hide();
-             next.show();
-             $("#clock").hide();
-            
-             
-   
-
-           
-
-
+                audio.pause();
+                results.html("<h2 class='text-center'>Correct!</h2>" + "<iframe class='text-center' width='' height='345' src='"+object.videoAnswers[count]+"'></iframe>");
+                answer1.hide();
+                answer2.hide();
+                answer3.hide();
+                answer4.hide();
+                question.hide();
+                replay.hide();
+                next.show();
+                $("#clock").hide();
+        //The next Question button is clicked..        
         next.click(function() {
+            //Clear the setTimout for the video
             clearTimeout(timeOut)
+            //Display the next question
             object.nextQuestion()
+            //terminate this click event after calling it
             $(this).off("click")
-
-            
-
         });
-           timeOut = setTimeout(object.nextQuestion, object.videoLength[count]);
-
-        
-        
-        // count++;
-        // setTimeout(object.nextQuestion, object.videoLength[count]);
-      
-        
+        //Set timeout will call the nextQuestion function after the videos length
+        timeOut = setTimeout(object.nextQuestion, object.videoLength[count]);
     },
-
+    //Wrong answer Screen
     wrongSelection: function() {
         wrongAnswers++;
-        audio.pause();
-         results.html("<h2 class='text-center'>Incorrect!</h2>" + "<img src='assets/images/no.gif'>");
-           answer1.hide();
-            answer2.hide();
-            answer3.hide();
-            answer4.hide();
-            question.hide();
-            replay.hide();
-             next.show();
-             $("#clock").hide();
+                audio.pause();
+                results.html("<h2 class='text-center'>Incorrect!</h2>" + "<img src='assets/images/no.gif'>");
+                answer1.hide();
+                answer2.hide();
+                answer3.hide();
+                answer4.hide();
+                question.hide();
+                replay.hide();
+                next.show();
+                $("#clock").hide();
              
-
+        //The next Question button is clicked..   
         next.click(function() {
+            //Clear the setTimout for the video
             clearTimeout(timeOut)
+             //Display the next question
             object.nextQuestion()
+             //terminate this click event after calling it
             $(this).off("click")
-
-            
-
         });
-
-           
-       timeOut = setTimeout(object.nextQuestion, 5000);
+        // Call next question after 5 seconds
+        timeOut = setTimeout(object.nextQuestion, 5000);
     },
-
+    //Loss due to timer = 0
     lossDueToTime: function() {
             results.html("<h2>Times Up!!!</h2>");
             answer1.hide();
@@ -161,28 +147,19 @@ $(document).ready(function () {
             answer4.hide();
             question.hide();
             replay.hide();
-             next.show();
+            next.show();
             wrongAnswers++;
-             $("#clock").hide();
-
-    //  next.click(function() {
-    //         clearTimeout(timeOut)
-    //         object.nextQuestion()
-    //         $(this).off("click")
-
-            
-
-    //     });
-
+            $("#clock").hide();
+            //Run nextQUestion after 5 seconds
             timeOut = setTimeout(object.nextQuestion, 5000);
     
     },
 
-
-        displayQuestion: function () {
+    //Displaying the question
+    displayQuestion: function () {
             start.hide();
             next.hide();
-             answer1.show();
+            answer1.show();
             answer2.show();
             answer3.show();
             answer4.show();
@@ -193,46 +170,40 @@ $(document).ready(function () {
             answer3.text(object.answers[count][2]);
             answer4.text(object.answers[count][3]);
             results.empty();
-             audio.play();
-              $("#clock").show();
-            
-
-            // object.pickingAnswer();
-
-          
+            audio.play();
+            $("#clock").show();
         },
-
-        nextQuestion: function () {
-
-              if (count < 9) {
-	        count++;
-            // console.log(count)
-	        object.displayQuestion();
-	        clock = 30;
-	        object.timer();
-	    }
-	    else {
-		    object.endScreen();
-	    }
+    //Next Question
+    nextQuestion: function () {
+            // If the count of questions is less than 9, increase count and display Question, Set clock to 30 and run timer
+            if (count < 9) {
+	            count++;
+	            object.displayQuestion();
+	            clock = 30;
+	            object.timer();
+	        }
+            //If count is greater then show Final Screen
+	        else {
+		        object.endScreen();
+	        }
        
-            
         },
-        endScreen: function() {
+    //End Screen
+    endScreen: function() {
             results.html("<div class='finalScreen'><h2>Game Over</h2><br><h3>Correct Answers:"+ correctAnswers +"</h3><br><h3>Wrong Answers:"+ wrongAnswers +"</h3><br><button id='replay' class='btn btn-success'>Replay</button></div>")
-             question.empty();
+            question.empty();
             answer1.empty();
             answer2.empty();
             answer3.empty();
             answer4.empty();
             next.hide();
             audio.play();
+            //Run the restart function
             object.restart();
-
-
-
-        },
-
-        restart: function() {
+    },
+    //Restart Function
+    restart: function() {
+            //On button click ..
             $("#replay").click(function() {
                 count = 0;
                 clock = 30;
@@ -240,21 +211,17 @@ $(document).ready(function () {
                 wrongAnswers = 0;
                 object.timer();
                 object.displayQuestion();
-            })
-        },
-       
- 
-
-
-        timer: function() {
+            });
+    },
+    //Timer function   
+    timer: function() {
             theClock = setInterval(countDown, 1000)
-
-            function countDown() {
-                if (clock === 0){
-                    clearInterval(theClock);
-                     object.lossDueToTime();
-                }
-                else {
+                function countDown() {
+                    if (clock === 0){
+                         clearInterval(theClock);
+                         object.lossDueToTime();
+                    }
+                    else {
                     if (clock > 0) {
                         clock--;
                     }
